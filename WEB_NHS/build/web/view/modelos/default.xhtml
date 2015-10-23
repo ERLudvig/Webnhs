@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <link rel="icon" href="#{resource['img/favicon.png']}" sizes="16x16" />
+        <title><ui:insert name="title">Início</ui:insert></title> 
+        <!--        - SERIPLAST-->
+        <!--        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Signika:400,700" rel="stylesheet" type="text/css"/>-->
+        <h:outputStylesheet name="./bootstrap/css/bootstrap.min.css" />
+        <h:outputStylesheet name="./bootstrap/css/bootstrap-theme.min.css" />
+        <h:outputStylesheet name="./font-awesome/css/font-awesome.min.css" />
+        <h:outputStylesheet name="./data-tables/dataTables.min.css" />
+        <h:outputStylesheet name="./css/css.css" />
+        <h:outputScript name="./js/jquery-2.1.3.min.js"></h:outputScript>
+        <h:outputScript name="./bootstrap/js/bootstrap.min.js"></h:outputScript>
+        <h:outputScript name="./data-tables/dataTables.min.js"></h:outputScript>
+        <h:outputScript name="./js/bootbox.min.js"></h:outputScript>
+        <h:outputScript name="./js/default.js"></h:outputScript>
+        <ui:insert name="header"> </ui:insert>
+
+        <script>
+            /*<![CDATA[*/
+            $(function () {
+                if (localStorage["MenuStatus"] == "closed") {
+                    $('.main-content-wrapper').addClass('closed');
+                    $("#CloseMenuLeft").attr('class', 'fa fa-reorder');
+                }
+
+                $('#CloseMenuLeft').click(function () {
+                    if ($('.main-content-wrapper').hasClass('closed')) {
+                        $('.main-content-wrapper').removeClass('closed');
+                        $(this).attr('class', 'fa fa-chevron-left');
+                        localStorage["MenuStatus"] = "open";
+                    } else {
+                        $('.main-content-wrapper').addClass('closed');
+                        $(this).attr('class', 'fa fa-reorder');
+                        localStorage["MenuStatus"] = "closed";
+                    }
+                });
+            });
+            /*]]>*/
+        </script>
+        <style>
+            .main-content-wrapper.closed .page-sidebar-wrapper{
+                display: none !important;
+            }
+            .main-content-wrapper.closed .page-content{
+                margin-left: 0;
+                padding: 10px 0 0 0;
+            }
+            #CloseMenuLeft{
+                margin-right: 15px;
+                cursor: pointer;
+            }
+            #CloseMenuLeft:hover{
+                font-size: 15px;
+                margin-right: 14px;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <!--        {loginBean.setUsuarioByLogin(request.getRemoteUser())}-->
+        <div class="page-container">
+            <div class="page-header navbar navbar-static-top">
+                <div class="page-logo">
+                    <h:link outcome="/faces/view/index">
+                        <h1 class="logo">
+                            <h:graphicImage alt="SERIPLAST Serigrafia" name="img/logo.png" style="transform: rotate(2deg);"></h:graphicImage>
+                        </h1>
+
+                    </h:link>
+
+
+                </div>
+
+                <div class="page-title" style="text-align: center">
+                    <h2><ui:insert name="title">Início</ui:insert></h2>
+                </div>
+                <!--                <div class="page-topmenu pull-right">
+                                    <ul class="nav navbar-nav pull-right">
+                                        <li class="dropdown dropdown-user">
+                                            <h:link outcome="/faces/view/set/perfil">
+                                                                                <span>{loginBean.usuario.pessoa.pes_nome}</span>
+                                                                                <c:if test="{loginBean.usuario.pessoa.repositorio != null}">
+                                                                                    <img class="user-photo" src="{loginBean.profileImageUrl}" />
+                                                                                </c:if>
+                                            </h:link>
+                
+                
+                                        </li>
+                                    </ul>
+                                </div>-->
+            </div>
+            <div class="main-content-wrapper">
+                <div class="page-sidebar-wrapper">
+                    <div class="page-sidebar navbar-collapse">
+                        <ul class="page-sidebar-menu">
+                            <li class="#{view.viewId == '/view/index.xhtml' ? 'active' : ''}">
+                                <h:link outcome="/faces/view/index">
+                                    <span class="fa fa-home"></span>
+                                    <span class="menu-text">Início</span>
+                                </h:link>
+                            </li>
+
+
+                            <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/categorialst">
+                                    <span class="fa fa-tag"></span>
+                                    <span class="menu-text">Categorias</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/produto') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/produtolst">
+                                    <span class="fa fa-shopping-cart"></span>
+                                    <span class="menu-text">Produtos</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/despesalst') || view.viewId.contains('/view/folder/despesafrm') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/despesalst">
+                                    <span class="fa fa-money"></span>
+                                    <span class="menu-text">Despesas</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/custo') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/custolst">
+                                    <span class="fa fa-usd"></span>
+                                    <span class="menu-text">Custos</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/maquina') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/maquinalst">
+                                    <span class="fa fa-flash"></span>
+                                    <span class="menu-text">Máquinas</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/pedido') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/pedidolst">
+                                    <span class="fa fa-pencil-square-o"></span>
+                                    <span class="menu-text">Pedidos</span>
+                                </h:link>
+                            </li>
+                            <li class="#{view.viewId.contains('/view/folder/despesames') ? 'active' : ''}">
+                                <h:link outcome="/faces/view/folder/despesameslst">
+                                    <span class="fa fa-calendar"></span>
+                                    <span class="menu-text">Despesa Mês</span>
+                                </h:link>
+                            </li>
+
+                            <!--                            <li class="menu-dropdown {view.viewId.contains('/cfg/') ? 'open' : ''}">
+                                                            <a href="javascript:void(0);">
+                                                                <span class="fa fa-cogs"></span>
+                                                                <span class="menu-text">Configurações</span>
+                                                                <span class="fa dropdown-chevron pull-right"></span>
+                                                            </a>
+                                                            <ul class="submenu">
+                                                                <li class="{view.viewId.contains('/usuario') ? 'active' : ''}">
+                                                                    <h:link outcome="/faces/view/set/usuariolst">
+                                                                        <span class="fa fa-users"></span>
+                                                                        <span class="menu-text">Usuários</span>
+                                                                    </h:link>
+                                                                </li>
+                                                                <li class="{view.viewId.contains('/pessoa') ? 'active' : ''}">
+                                                                    <h:link outcome="/faces/view/set/pessoalst">
+                                                                        <span class="fa fa-user"></span>
+                                                                        <span class="menu-text">Pessoas</span>
+                                                                    </h:link>
+                                                                </li>
+                                                            </ul>
+                                                        </li>-->
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                        <!--<div class="page-title">
+                          <h2><ui:insert name="title">Início</ui:insert></h2>
+                          </div>-->
+                        <ui:fragment rendered="#{empty no_breadcrumb}">
+                            <ul class="breadcrumb">
+                                <i class="fa fa-chevron-left" id="CloseMenuLeft"></i>
+                                <li>
+                                    <h:link value="Início" outcome="/faces/view/index" />
+                                </li>
+                                <ui:insert name="breadcrumb"> </ui:insert>
+                            </ul>
+                        </ui:fragment>
+                        <ui:insert name="main-content" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>
+
