@@ -1,0 +1,54 @@
+<ui:composition template="./../modelos/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="title">
+        ${bairroBean.getsTitle()}
+    </ui:define>
+
+    <ui:define name="breadcrumb">
+        
+        <li><h:link value="Lista de Bairros" outcome="/faces/view/folder/bairrolst" /></li>
+        <li><h:link value="Cadastro de Bairros" outcome="/faces/view/folder/bairrofrm" /></li>
+    </ui:define>
+
+    <ui:define name="main-content">
+        <div class="panel panel-body">
+            <h3><h:outputText value="Dados do ${bairroBean.getsTitle()}"/></h3>
+            <f:view>
+                <h:form styleClass="form-horizontal">
+                    <h:inputHidden id="tpeCodigo" value="#{bairroBean.bairro.bai_cod}" />
+          
+                    
+              
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="Nome do Bairro:" for="tpeNome" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText pt:required="required" id="TpeNome" value="#{bairroBean.bairro.bai_descricao}" title="Nome" styleClass="form-control" pt:autofocus="" />
+                        </div></div>
+                      <div class="form-group">
+                            <h:outputLabel style="" value="Cidade " for="bai_cidade" styleClass="control-label col-sm-2" />
+                            <div class="col-md-5 col-sm-12">
+                                <h:selectOneMenu id="pro_dep" pt:required="false" converter="cidadeConverter" value="#{bairroBean.bairro.bai_cidade}" styleClass="form-control cargoPaiCbo">
+                                    <f:selectItems value="#{bairroBean.lstcCidade}" var="tipe" itemLabel="#{tipe.cid_nome}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-11 col-sm-offset-0 col-sm-12 btn-group-separated">
+                            <h:link styleClass="btn btn-default" value="Cancelar" outcome="#{bairroBean.listar()}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Salvar" action="#{bairroBean.salvar()}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </f:view>
+        </div>
+    </ui:define>
+
+</ui:composition>
