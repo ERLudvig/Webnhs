@@ -114,10 +114,11 @@
     color: #bebebe;
 }
 body {
-    background: url('/Seriplast/faces/resources/img/body.jpg');
+    background: url('/WEB_NHS/faces/resources/img/body2.jpg');
+    
     /*    background: #E9ECF3;*/
     /*    background: #F3E9E9;*/
-    color: #777777;
+    //color: #777777;
 }
 
 .page-login {
@@ -153,7 +154,7 @@ body {
     margin: 0;
     border: 0;
     padding: 0;
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.24) none repeat scroll 0% 0%;
     height: 80px;
 }
 .page-logo {
