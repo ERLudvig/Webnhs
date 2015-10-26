@@ -114,10 +114,11 @@
     color: #bebebe;
 }
 body {
-    background: url('/Seriplast/faces/resources/img/body.jpg');
+    background: url('/WEB_NHS/faces/resources/img/body.jpg');
+
     /*    background: #E9ECF3;*/
     /*    background: #F3E9E9;*/
-    color: #777777;
+    //color: #777777;
 }
 
 .page-login {
@@ -153,7 +154,7 @@ body {
     margin: 0;
     border: 0;
     padding: 0;
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.24) none repeat scroll 0% 0%;
     height: 80px;
 }
 .page-logo {
@@ -443,7 +444,18 @@ a:focus, a:hover {
     text-decoration: underline;
 }
 .page-title{
-    color: #A2192B;
+    
+    text-shadow: 
+        1px 0px 0px black,-1px 0px 0px black,0px 1px 0px black,0px -1px 0px black;
+        
+    font-size: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: "Signika",Tahoma,Arial,sans-serif;
+    //font-family: 'Passion One', cursive;
+    //font-family: 'Passion One', Tahoma, Arial, sans-serif;
+    //font-weight: bold;
+    font-style: inherit;
 }
 .breadcrumb>li+li:before {
     color: #A2192B;
