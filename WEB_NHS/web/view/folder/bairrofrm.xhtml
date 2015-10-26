@@ -11,8 +11,8 @@
 
     <ui:define name="breadcrumb">
         
-        <li><h:link value="Lista de Bairros" outcome="/faces/view/pess/bairrolst" /></li>
-        <li><h:link value="Cadastro de Bairros" outcome="/faces/view/pess/bairrofrm" /></li>
+        <li><h:link value="Lista de Bairros" outcome="/faces/view/folder/bairrolst" /></li>
+        <li><h:link value="Cadastro de Bairros" outcome="/faces/view/folder/bairrofrm" /></li>
     </ui:define>
 
     <ui:define name="main-content">
@@ -28,8 +28,16 @@
                     <div class="form-group">
                         <h:outputLabel value="Nome do Bairro:" for="tpeNome" styleClass="control-label col-sm-2" />
                         <div class="col-md-6 col-sm-12">
-                            <h:inputText pt:required="required" id="TpeNome" value="#{bairroBean.bairro.bai_nome}" title="Nome" styleClass="form-control" pt:autofocus="" />
+                            <h:inputText pt:required="required" id="TpeNome" value="#{bairroBean.bairro.bai_descricao}" title="Nome" styleClass="form-control" pt:autofocus="" />
                         </div></div>
+                      <div class="form-group">
+                            <h:outputLabel style="" value="Cidade " for="bai_cidade" styleClass="control-label col-sm-2" />
+                            <div class="col-md-5 col-sm-12">
+                                <h:selectOneMenu id="pro_dep" pt:required="false" converter="cidadeConverter" value="#{bairroBean.bairro.bai_cidade}" styleClass="form-control cargoPaiCbo">
+                                    <f:selectItems value="#{bairroBean.lstcCidade}" var="tipe" itemLabel="#{tipe.cid_nome}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
 
 
                     <div class="form-group">
