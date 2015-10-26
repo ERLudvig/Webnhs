@@ -72,30 +72,14 @@
                         <h1 class="logo">
                             <h:graphicImage alt="SERIPLAST Serigrafia" name="img/logo.png" style="transform: rotate(2deg);"></h:graphicImage>
                         </h1>
-
                     </h:link>
-
-
                 </div>
-
                 <div class="page-title" style="text-align: center">
                     <h2><ui:insert name="title">Início</ui:insert></h2>
                 </div>
-                <!--                <div class="page-topmenu pull-right">
-                                    <ul class="nav navbar-nav pull-right">
-                                        <li class="dropdown dropdown-user">
-                                            <h:link outcome="/faces/view/set/perfil">
-                                                                                <span>{loginBean.usuario.pessoa.pes_nome}</span>
-                                                                                <c:if test="{loginBean.usuario.pessoa.repositorio != null}">
-                                                                                    <img class="user-photo" src="{loginBean.profileImageUrl}" />
-                                                                                </c:if>
-                                            </h:link>
-                
-                
-                                        </li>
-                                    </ul>
-                                </div>-->
             </div>
+
+            <!--BARRA LATERAL-->
             <div class="main-content-wrapper">
                 <div class="page-sidebar-wrapper">
                     <div class="page-sidebar navbar-collapse">
@@ -108,70 +92,111 @@
                             </li>
 
 
-                            <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+<!--                            <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
                                 <h:link outcome="/faces/view/folder/categorialst">
                                     <span class="fa fa-tag"></span>
                                     <span class="menu-text">Categorias</span>
                                 </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/produto') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/produtolst">
-                                    <span class="fa fa-shopping-cart"></span>
-                                    <span class="menu-text">Produtos</span>
-                                </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/despesalst') || view.viewId.contains('/view/folder/despesafrm') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/despesalst">
-                                    <span class="fa fa-money"></span>
-                                    <span class="menu-text">Despesas</span>
-                                </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/custo') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/custolst">
-                                    <span class="fa fa-usd"></span>
-                                    <span class="menu-text">Custos</span>
-                                </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/maquina') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/maquinalst">
-                                    <span class="fa fa-flash"></span>
-                                    <span class="menu-text">Máquinas</span>
-                                </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/pedido') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/pedidolst">
-                                    <span class="fa fa-pencil-square-o"></span>
-                                    <span class="menu-text">Pedidos</span>
-                                </h:link>
-                            </li>
-                            <li class="#{view.viewId.contains('/view/folder/despesames') ? 'active' : ''}">
-                                <h:link outcome="/faces/view/folder/despesameslst">
-                                    <span class="fa fa-calendar"></span>
-                                    <span class="menu-text">Despesa Mês</span>
-                                </h:link>
-                            </li>
+                            </li>-->
 
-                            <!--                            <li class="menu-dropdown {view.viewId.contains('/cfg/') ? 'open' : ''}">
-                                                            <a href="javascript:void(0);">
-                                                                <span class="fa fa-cogs"></span>
-                                                                <span class="menu-text">Configurações</span>
-                                                                <span class="fa dropdown-chevron pull-right"></span>
-                                                            </a>
-                                                            <ul class="submenu">
-                                                                <li class="{view.viewId.contains('/usuario') ? 'active' : ''}">
-                                                                    <h:link outcome="/faces/view/set/usuariolst">
-                                                                        <span class="fa fa-users"></span>
-                                                                        <span class="menu-text">Usuários</span>
-                                                                    </h:link>
-                                                                </li>
-                                                                <li class="{view.viewId.contains('/pessoa') ? 'active' : ''}">
-                                                                    <h:link outcome="/faces/view/set/pessoalst">
-                                                                        <span class="fa fa-user"></span>
-                                                                        <span class="menu-text">Pessoas</span>
-                                                                    </h:link>
-                                                                </li>
-                                                            </ul>
-                                                        </li>-->
+
+                            <li class="menu-dropdown #{view.viewId.contains('/t/') ? 'open' : ''}">
+                                <a href="javascript:void(0);">
+                                    <span class="fa fa-pencil-square-o"></span>
+                                    <span class="menu-text">Cadastros</span>
+                                    <span class="fa dropdown-chevron pull-right"></span>
+                                </a>
+
+                                <!--SUB-MENU-->
+                                <ul class="submenu">
+                                    <li class="#{view.viewId.contains('/view/folder/pessoa') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/pessoalst">
+                                            <span class="fa fa-users"></span>
+                                            <span class="menu-text">Pessoas</span>
+                                        </h:link>
+                                    </li>
+                                    
+                                     <li class="#{view.viewId.contains('/view/folder/empresa') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/pessoalst">
+                                            <span class="fa fa-building-o"></span>
+                                            <span class="menu-text">Empresas</span>
+                                        </h:link>
+                                    </li>
+                                     <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/categorialst">
+                                            <span class="fa fa-cubes"></span>
+                                            <span class="menu-text">Produtos</span>
+                                        </h:link>
+                                    </li>
+                                     <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/categorialst">
+                                            <span class="fa fa-list-alt"></span>
+                                            <span class="menu-text">Departamento</span>
+                                        </h:link>
+                                    </li>
+                                     <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/categorialst">
+                                            <span class="fa fa-list-alt"></span>
+                                            <span class="menu-text">Grupo</span>
+                                        </h:link>
+                                    </li>
+                                     <li class="#{view.viewId.contains('/view/folder/categoria') ? 'active' : ''}">
+                                        <h:link outcome="/faces/view/folder/categorialst">
+                                             <span class="fa fa-list-alt"></span>
+                                            <span class="menu-text">Marca</span>
+                                        </h:link>
+                                    </li> 
+                                       <li class="menu-dropdown #{view.viewId.contains('/t') ? 'open' : ''}">
+                                        <a href="javascript:void(0);">
+                                            <span class="fa fa-location-arrow"></span>
+                                            <span class="menu-text">Localizações</span>
+                                            <span class="fa dropdown-chevron pull-right"></span>
+                                        </a>
+                                        <ul class="submenu">
+
+                                            <li class="#{view.viewId.contains('/cidade') ? 'active' : ''}">
+                                                <h:link outcome="/faces/view/folder/cidadelst">
+                                                    <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Cidade</span>
+                                                </h:link> 
+                                            </li>
+                                            <li class="#{view.viewId.contains('/bairro') ? 'active' : ''}">
+                                                <h:link outcome="/faces/view/folder/bairrolst">
+                                                    <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Bairro</span>
+                                                </h:link>
+                                            </li>
+
+                                        </ul>
+                                    </li> 
+                                  
+
+                                   <!--SUB-SUB-MENU-->
+                                    <li class="menu-dropdown #{view.viewId.contains('/t') ? 'open' : ''}">
+                                        <a href="javascript:void(0);">
+                                          <span class="fa fa-cogs"></span>
+                                            <span class="menu-text">Configurações</span>
+                                            <span class="fa dropdown-chevron pull-right"></span>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li class="#{view.viewId.contains('/endereco') ? 'active' : ''}">
+                                                <h:link outcome="/faces/view/nada">
+                                                    <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Operação de Entrada</span>
+                                                </h:link>   
+                                                <h:link outcome="/faces/view/nada">
+                                                    <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Operação de Saída</span>
+                                                </h:link>   
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                   
+                                   <!--FIM SUB-SUB-MENU-->
+                                </ul>
+                                
+                            </li> 
 
                         </ul>
                     </div>
@@ -195,6 +220,9 @@
                     </div>
                 </div>
             </div>
+
+            <!--FIM BARRA LATERAL-->
+
         </div>
     </h:body>
 

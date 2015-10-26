@@ -1,0 +1,232 @@
+<ui:composition template="./../modelos/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="header">
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            $(function () {
+                $(".pesNecEsp").click(function () {
+                    if ($(".pesNecEsp").is(':checked')) {
+                        $("#pesNecessidadeEspecial").fadeIn();
+                        $(".pesDesNec").attr("required", "required");
+                    } else {
+                        $("#pesNecessidadeEspecial").fadeOut();
+                        $(".pesDesNec").removeAttr("required");
+                    }
+                });
+            });
+            
+            function teste(){
+                //var e = $("select[name$='pesTipo_input'] option:selected").val()
+                alert(e);
+            }
+            function formataCpfCnpj() {
+                var valor = document.getElementById('frmPessoa:pesCPF').value;
+                valor = valor.replace(".", "").replace(".", "").replace("-", "").replace("/", "");
+                valor = valor.replace(/\D/g, "")
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2")
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2")
+                valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+                document.getElementById('frmPessoa:pesCPF').value = valor;
+            }
+            
+            function validaCpf() {
+                var valor = document.getElementById('frmPessoa:pesCPF').value;
+                valor = valor.replace(".", "");
+                valor = valor.replace(".", "");
+                valor = valor.replace("-", "");
+
+                if (valor != "") {
+                    if (vercpf(valor)) {
+                        /*valor.submit(); Comentado, pois estava dando erro undefined*/
+                    } else {
+                        errors = "1";
+                        if (errors)
+                            alert('CPF Inválido');
+                        document.getElementById('frmPessoa:pesCPF').value = '';
+                    }
+                }
+            }
+
+
+            function vercpf(cpf) {
+                if (cpf.length != 11 || cpf == "00000000000" || cpf == "11111111111" || cpf == "22222222222" || cpf == "33333333333" || cpf == "44444444444" || cpf == "55555555555" || cpf == "66666666666" || cpf == "77777777777" || cpf == "88888888888" || cpf == "99999999999")
+                    return false;
+                add = 0;
+                for (i = 0; i < 9; i++)
+                    add += parseInt(cpf.charAt(i)) * (10 - i);
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11)
+                    rev = 0;
+                if (rev != parseInt(cpf.charAt(9)))
+                    return false;
+                add = 0;
+                for (i = 0; i < 10; i++)
+                    add += parseInt(cpf.charAt(i)) * (11 - i);
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11)
+                    rev = 0;
+                if (rev != parseInt(cpf.charAt(10)))
+                    return false;
+                return true;
+            }
+            /*]]>*/
+        </script>
+    </ui:define>
+
+    <ui:define name="title">
+        ${pessoaBean.pTitle}
+    </ui:define>
+
+    <ui:define name="breadcrumb">
+          
+        <li><h:link value="Lista de Clientes" outcome="/faces/view/pess/pessoalst" /></li>
+         <li><h:link value="Lista de Fornecedores" outcome="/faces/view/pess/fornecedorlst" /></li>
+          <li><h:link value="Lista de Vendedores" outcome="/faces/view/pess/vendedorlst" /></li>
+        <li><h:link value="Cadastro de Pessoas" outcome="/faces/view/pess/pessoafrm" /></li>
+    </ui:define>
+
+    <ui:define name="main-content">
+        <div class="panel panel-body">
+            <h3><h:outputText value="Dados da ${pessoaBean.sTitle}"/></h3>
+            <f:view>
+                <h:form styleClass="form-horizontal" id="frmPessoa">
+                    <h:inputHidden id="pesCodigo" value="#{pessoaBean.pessoa.pes_codigo}" />
+                  
+                    <div class="form-group">
+                        <h:outputLabel value="Nome:" for="pesNome" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText id="pesNome" value="#{pessoaBean.pessoa.pes_nome}" title="Nome da Pessoa" pt:required="required" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="CPF:" for="pesCPF" styleClass="control-label col-sm-2" />
+                        <div class="col-xs-2 col-sm-3">
+                            <h:inputText id="pesCPF" value="#{pessoaBean.pessoa.pes_cpf}" title="CPF da Pessoa" pt:required="required"
+                                         styleClass="form-control" pt:autofocus="" onkeypress="formataCpfCnpj();" onblur="validaCpf();"/>
+                        </div>
+                        <h:outputLabel value="Identidade:" for="pesIdentidade" styleClass="control-label col-sm-1" />
+                        <div class="col-xs-2">
+                            <h:inputText id="pesIdentidade" value="#{pessoaBean.pessoa.pes_rg}" title="Identidade da Pessoa" pt:required="" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="Telefone:" for="pesTelefone" styleClass="control-label col-sm-2" />
+                        <div class="col-xs-2 col-sm-3">
+                            <h:inputText id="pesTelefone" value="#{pessoaBean.pessoa.pes_telefone}" title="Telefone da Pessoa" pt:required="" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                        <h:outputLabel value="Nascimento:" for="pesDataNasc" styleClass="control-label col-sm-1" />
+                        <div class="col-xs-2 ">
+                            <h:inputText id="pesDataNasc" pt:type="date" value="#{pessoaBean.pessoa.pes_datanasc}" title="Data de nascimento da pessoa" pt:required="required" styleClass="form-control" pt:autofocus="">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Email:" for="pesEmail" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText pt:type="email" id="pesEmail" value="#{pessoaBean.pessoa.pes_email}" title="Email da Pessoa" pt:required="" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel value="Cidade:" for="pesCidade" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
+                            <h:selectOneMenu value="#{pessoaBean.pessoa.cidade}" converter="cidadeConverter" id="pesCidade" class="form-control">
+                                <f:selectItems value="#{cidadeBean.cidades}" var="cidade" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="Bairro:" for="pesBairro" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
+                            <h:selectOneMenu value="#{pessoaBean.pessoa.bairro}" converter="bairroConverter" id="pesBairro" class="form-control">
+                                <f:selectItems value="#{bairroBean.bairros}" var="bairro" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="form-group">
+                        <h:outputLabel value="Endereço:" for="pesComplementoEnd" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText id="pesComplementoEnd" value="#{pessoaBean.pessoa.pes_complementoend}" title="Complemento do enderço da pessoa" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Pai:" for="pesPai" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText id="pesPai" value="#{pessoaBean.pessoa.pes_pai}" title="Pai da Pessoa"  styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Mãe:" for="pesMae" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText id="pesMae" value="#{pessoaBean.pessoa.pes_mae}" title="Mãe da Pessoa" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Cidade Nasc:" for="pesCidadeNas" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
+                            <h:selectOneMenu value="#{pessoaBean.pessoa.cidadenasc}" converter="cidadeConverter" id="pesCidadeNas" class="form-control">
+                                <f:selectItems value="#{cidadeBean.cidades}" var="cidadenasc" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Tipo Pessoa:" for="pesTipo" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
+                            <h:selectOneMenu value="#{pessoaBean.pessoa.pes_tipo}" id="pesTipo" class="form-control" onchange="teste();">
+                                <f:selectItem itemValue="1" itemLabel="Cliente"/>
+                                <f:selectItem itemValue="2" itemLabel="Fornecedor"/>
+                                <f:selectItem itemValue="3" itemLabel="Vendedor"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <h:outputLabel value="Observações:" for="pesObs" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputTextarea id="pesObs" value="#{pessoaBean.pessoa.pes_observacoes}" title="Observações da Pessoa" styleClass="form-control" pt:autofocus="" />
+                        </div>
+                    </div>
+                   
+                 
+                    <div class="form-group">
+                        <h:outputLabel value="Data Cadastro:" for="pesDataCad" styleClass="control-label col-sm-2" />
+                        <div class="col-md-2 col-sm-3">
+                            <h:inputText id="pesDataCad" pt:type="date" value="#{pessoaBean.pessoa.pes_datacadastro}" title="Data do Cadastro da pessoa" pt:required="required" styleClass="form-control" pt:autofocus="">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:inputText>
+                        </div>
+                        <h:outputLabel value="Est Civíl:" for="pesEC" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-xs-2">
+                            <h:selectOneMenu value="#{pessoaBean.pessoa.pes_estadocivil}" id="pesEC" class="form-control">
+                                <f:selectItem itemValue="1" itemLabel="Solteiro(a)"/>
+                                <f:selectItem itemValue="2" itemLabel="Casado(a)"/>
+                                <f:selectItem itemValue="3" itemLabel="Separado(a)"/>
+                                <f:selectItem itemValue="4" itemLabel="Outros"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-11 col-sm-offset-0 col-sm-12 btn-group-separated">
+                            <h:link styleClass="btn btn-default" value="Cancelar" outcome="#{pessoaBean.listar()}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Salvar" action="#{pessoaBean.salvar()}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </f:view>
+        </div>
+    </ui:define>
+
+</ui:composition>
