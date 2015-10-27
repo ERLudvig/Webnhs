@@ -22,8 +22,10 @@ public class BairroBean {
     private Bairro bairro = new Bairro();
     private BairroDAO dao = new BairroDAO();
     private DataModel bairros;
+    private List<Bairro> lstbairro;
     
     //CIDADE
+    private Cidade cidade = new Cidade();
     private List<Cidade> lstcidade;
     private CidadeDAO cid_dao = new CidadeDAO();
 
@@ -100,13 +102,19 @@ public class BairroBean {
     public String listar() {
         return "bairrolst";
     }
-    public List<Cidade> getLstcCidade() {
+    public List<Cidade> getLstCidade() {
        lstcidade = cid_dao.findAll();
         return lstcidade;
     }
+    
     public DataModel getBairrosCidade(int cidade) {
         this.bairros = new ListDataModel(dao.BairroCid(cidade));
         return bairros;
+    }
+    
+     public List<Bairro> getLstBairro() {
+       lstbairro = dao.BairroCid(cidade.getCid_cod());
+        return lstbairro;
     }
     
     

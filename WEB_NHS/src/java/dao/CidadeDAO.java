@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -42,6 +43,8 @@ public class CidadeDAO {
 
         return (Cidade) session.load(Cidade.class, id);
     }
+    
+ 
 
     public List<Cidade> findAll() {
         Query q = session.createQuery("from Cidade");
