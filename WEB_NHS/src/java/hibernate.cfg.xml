@@ -18,5 +18,6 @@
     <!--<mapping class="model.Empresa"/>-->
     <!--<mapping class="model.Moeda"/>-->
     <!--<mapping class="model.Conta"/>-->
+    <mapping class="model.Empresa"/>
   </session-factory>
 </hibernate-configuration>
