@@ -24,7 +24,11 @@ public class Empresa implements Serializable {
  
     private int emp_codigo;
     private String emp_nome;
-    
+    private int emp_genero;
+    /**
+     * 1 - Cliente
+     * 2 - Fornecedor
+     */
     private int emp_tipo;
     /**
      * 1 - Empresa Privada 
@@ -143,7 +147,7 @@ public class Empresa implements Serializable {
     }
 
     public void setEmp_bairro(Bairro emp_bairro) {
-        this.emp_bairro = emp_bairro;
+        this.emp_bairro = emp_bairro; 
     }
 
     public String getEmp_cnpj() {
@@ -152,6 +156,14 @@ public class Empresa implements Serializable {
 
     public void setEmp_cnpj(String emp_cnpj) {
         this.emp_cnpj = emp_cnpj;
+    }
+
+    public int getEmp_genero() {
+        return emp_genero;
+    }
+
+    public void setEmp_genero(int emp_genero) {
+        this.emp_genero = emp_genero;
     }
     
 }

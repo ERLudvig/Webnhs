@@ -34,6 +34,15 @@
                         <div class="col-md-6 col-sm-12">
                             <h:inputText pt:required="required" id="empcnpje" value="#{empresaBean.empresa.emp_cnpj}" title="CNPJ" styleClass="form-control" pt:autofocus="" />
                         </div></div>
+                     <div class="form-group">
+                        <h:outputLabel value="Genero Empresa:" for="empreGenero" styleClass="control-label col-sm-2" />
+                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
+                            <h:selectOneMenu value="${empresaBean.empresa.emp_genero}" id="empreGenero" class="form-control" onchange="">
+                                <f:selectItem itemValue="1" itemLabel="Cliente"/>
+                                <f:selectItem itemValue="2" itemLabel="Fornecedor"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <h:outputLabel value="Descrição:" for="empDescricao" styleClass="control-label col-md-2 col-sm-12" />
                         <div class="col-md-6 col-sm-12">

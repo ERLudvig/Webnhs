@@ -31,7 +31,12 @@ public class Pessoa implements Serializable {
     private Date pes_datanasc;
     private String pes_telefone;
     private String pes_email;
-     private int pes_tipo;
+     /**
+     * 1 - Cliente
+     * 2 - Fornecedor
+     * 3 - Vendedor
+     */
+    private int pes_tipo;
      /**
      * 1 - Solteiro (a)
      * 2 - Casado (a)
