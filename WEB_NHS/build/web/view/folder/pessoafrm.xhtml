@@ -83,7 +83,7 @@
     </ui:define>
 
     <ui:define name="breadcrumb">
-          <li><h:link value="Lista de Pessoas" outcome="/faces/view/folder/vendedorlst" /></li>
+          <li><h:link value="Lista de Pessoas" outcome="/faces/view/folder/pessoalst" /></li>
         <li><h:link value="Cadastro de Pessoas" outcome="/faces/view/folder/pessoafrm" /></li>
     </ui:define>
 
@@ -151,34 +151,6 @@
                             </h:selectOneMenu>
                         </div>
                     </div>
-                    
-                   
-<!--                    <div class="form-group">
-                        <h:outputLabel value="Endereço:" for="pesComplementoEnd" styleClass="control-label col-sm-2" />
-                        <div class="col-md-6 col-sm-12">
-                            <h:inputText id="pesComplementoEnd" value="{pessoaBean.pessoa.pes_complementoend}" title="Complemento do enderço da pessoa" styleClass="form-control" pt:autofocus="" />
-                        </div>
-                    </div>-->
-<!--                    <div class="form-group">
-                        <h:outputLabel value="Pai:" for="pesPai" styleClass="control-label col-sm-2" />
-                        <div class="col-md-6 col-sm-12">
-                            <h:inputText id="pesPai" value="{pessoaBean.pessoa.pes_pai}" title="Pai da Pessoa"  styleClass="form-control" pt:autofocus="" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h:outputLabel value="Mãe:" for="pesMae" styleClass="control-label col-sm-2" />
-                        <div class="col-md-6 col-sm-12">
-                            <h:inputText id="pesMae" value="{pessoaBean.pessoa.pes_mae}" title="Mãe da Pessoa" styleClass="form-control" pt:autofocus="" />
-                        </div>
-                    </div>-->
-<!--                    <div class="form-group">
-                        <h:outputLabel value="Cidade Nasc:" for="pesCidadeNas" styleClass="control-label col-sm-2" />
-                        <div style="padding-top: 5px" class="col-md-6 col-sm-12">
-                            <h:selectOneMenu value="{pessoaBean.pessoa.cidadenasc}" converter="cidadeConverter" id="pesCidadeNas" class="form-control">
-                                <f:selectItems value="{cidadeBean.cidades}" var="cidadenasc" />
-                            </h:selectOneMenu>
-                        </div>
-                    </div>-->
                     <div class="form-group">
                         <h:outputLabel value="Tipo Pessoa:" for="pesTipo" styleClass="control-label col-sm-2" />
                         <div style="padding-top: 5px" class="col-md-6 col-sm-12">
@@ -201,7 +173,7 @@
                     <div class="form-group">
 <!--                        <h:outputLabel value="Data Cadastro:" for="pesDataCad" styleClass="control-label col-sm-2" />
                         <div class="col-md-2 col-sm-3">
-                            <h:inputText id="pesDataCad" pt:type="date" value="#{pessoaBean.pessoa.pes_datacadastro}" title="Data do Cadastro da pessoa" pt:required="required" styleClass="form-control" pt:autofocus="">
+                            <h:inputText id="pesDataCad" pt:type="date" value="{pessoaBean.pessoa.pes_datacadastro}" title="Data do Cadastro da pessoa" pt:required="required" styleClass="form-control" pt:autofocus="">
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </h:inputText>
                         </div>-->

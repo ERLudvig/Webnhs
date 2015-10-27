@@ -89,6 +89,10 @@ public class PessoaBean {
         pessoa = (Pessoa) pessoas.getRowData();
         return "pessoafrm";
     }
+     public String view(Pessoa i) {
+        pessoa = (Pessoa) pessoas.getRowData();
+        return "pessoaview";
+    }
 
     public String update() {
         dao.update(pessoa);
@@ -125,6 +129,7 @@ public class PessoaBean {
     }
 
     public String listar() {
+        clearSession();
         return "pessoalst";
     }
 }

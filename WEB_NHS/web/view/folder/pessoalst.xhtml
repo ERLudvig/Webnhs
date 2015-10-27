@@ -7,7 +7,7 @@
     <body>
         <ui:composition template="../modelos/default.xhtml">
             <ui:define name="title">
-                Clientes
+                Pessoas
             </ui:define>
 
             <ui:define name="breadcrumb">
@@ -23,19 +23,21 @@
                         </h:link>
                     </div>
                     <h:form>
-                        <h:dataTable value="${pessoaBean.lstPessoa}" var="item" styleClass="dataTable table table-bordered table-striped">
+                        <h:dataTable value="${pessoaBean.pessoas}" var="item" styleClass="dataTable table table-bordered table-striped">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Código"/>
                                 </f:facet>
                                 <h:outputText value="${item.getPes_codigo()}"/>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nome"/>
-                                </f:facet>
-                                <h:outputText value="${item.getPes_nome()}"/>
-                            </h:column>
+                             <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nome"/>
+                                    </f:facet>
+                                 <h:commandLink title="Nome" action="#{pessoaBean.view(item)}" >
+                                        <i class="fa fa-file-text-o"></i> ${item.getPes_nome()}
+                                    </h:commandLink>
+                                </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="CPF"/>
