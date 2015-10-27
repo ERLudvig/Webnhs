@@ -1,0 +1,92 @@
+<ui:composition template="./../modelos/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">
+        ${produtoBean.getsTitle()}
+    </ui:define>
+
+    <ui:define name="breadcrumb">
+
+        <li><h:link value="Lista de Produtos" outcome="/faces/view/pro/produtolst" /></li>
+        <li><h:link value="Cadastro de Produtos" outcome="/faces/view/pro/produtofrm" /></li>
+    </ui:define>
+
+    <ui:define name="main-content">
+        <div class="panel panel-body">
+            <h3><h:outputText value="Dados do ${produtoBean.getsTitle()}"/></h3>
+            <f:view>
+                <h:form styleClass="form-horizontal">
+                    <h:inputHidden id="tpeCodigo" value="#{produtoBean.produto.pro_cod}" /> 
+
+                    <div class="form-group">
+                        <h:outputLabel value="Nome :" for="pro_nome" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText pt:required="required" id="pro_nome" value="#{produtoBean.produto.pro_nome}" title="Nome" styleClass="form-control" pt:autofocus="" />
+                        </div></div>
+
+                     <div class="form-group">
+                            <h:outputLabel style="" value="Marca: " for="pro_mar" styleClass="control-label col-sm-2" />
+                            <div class="col-md-5 col-sm-12">
+                                <h:selectOneMenu id="pro_marca" pt:required="false" converter="marcaConverter" value="#{produtoBean.produto.pro_marca}" styleClass="form-control cargoPaiCbo">
+                                    <f:selectItems value="#{produtoBean.lstMarca}" var="tipe" itemLabel="#{tipe.mar_nome}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                    
+                     <div class="form-group">
+                            <h:outputLabel style="" value="Departamento: " for="pro_dep" styleClass="control-label col-sm-2" />
+                            <div class="col-md-5 col-sm-12">
+                                <h:selectOneMenu id="pro_dep" pt:required="false" converter="departamentoConverter" value="#{produtoBean.produto.pro_departamento}" styleClass="form-control cargoPaiCbo">
+                                    <f:selectItems value="#{produtoBean.lstDepartamento}" var="tipe" itemLabel="#{tipe.dep_nome}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                            <h:outputLabel style="" value="Grupo : " for="pro_gru" styleClass="control-label col-sm-2" />
+                            <div class="col-md-5 col-sm-12">
+                                <h:selectOneMenu id="pro_gru" pt:required="false" converter="grupoConverter" value="#{produtoBean.produto.pro_grupo}" styleClass="form-control cargoPaiCbo">
+                                    <f:selectItems value="#{produtoBean.lstGrupo}" var="tipe" itemLabel="#{tipe.gru_nome}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+
+
+                    <div class="form-group">
+                        <h:outputLabel value="Ativo :" for="pro_ativo" styleClass="control-label col-sm-2" />
+                            <div class="col-md-2 col-sm-4">
+                                <h:selectBooleanCheckbox id="pro_ativo" value="#{produtoBean.produto.pro_ativo}" title="Situação" pt:autofocus="" />
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Custo :" for="pro_custo" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText  style="width: 20px" pt:required="required" id="pro_custo" value="#{produtoBean.produto.pro_custo}" title="Custo" styleClass="form-control" pt:autofocus="" />
+                        </div></div>                   
+                    <div class="form-group">
+                        <h:outputLabel value="Observação :" for="pro_obs" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText pt:required="required" id="pro_obs" value="#{produtoBean.produto.pro_observacao}" title="Observação" styleClass="form-control" pt:autofocus="" />
+                        </div></div>  
+                    <div class="form-group">
+                        <h:outputLabel value="Estoque :" for="pro_est" styleClass="control-label col-sm-2" />
+                        <div class="col-md-6 col-sm-12">
+                            <h:inputText pt:required="required" id="pro_est" value="#{produtoBean.produto.pro_q_estoque}" title="Estoque" styleClass="form-control" pt:autofocus="" />
+                        </div></div>                 
+
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-11 col-sm-offset-0 col-sm-12 btn-group-separated">
+                            <h:link styleClass="btn btn-default" value="Cancelar" outcome="#{produtoBean.listar()}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Salvar" action="#{produtoBean.salvar()}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </f:view>
+        </div>
+    </ui:define>
+
+</ui:composition>

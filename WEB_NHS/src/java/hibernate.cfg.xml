@@ -8,10 +8,6 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">erl</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <!--<mapping class="model.Departamento"/>-->
-    <!--<mapping class="model.Grupo"/>-->
-    <!--<mapping class="model.Marca"/>-->
-    <!--<mapping class="model.Produto"/>-->
     <mapping class="model.Bairro"/>
     <mapping class="model.Cidade"/>
     <mapping class="model.Pessoa"/>
@@ -19,5 +15,9 @@
     <!--<mapping class="model.Moeda"/>-->
     <!--<mapping class="model.Conta"/>-->
     <mapping class="model.Empresa"/>
+    <mapping class="model.Departamento"/>
+    <mapping class="model.Grupo"/>
+    <mapping class="model.Marca"/>
+    <mapping class="model.Produto"/>
   </session-factory>
 </hibernate-configuration>
