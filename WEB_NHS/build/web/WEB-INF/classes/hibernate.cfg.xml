@@ -19,5 +19,7 @@
     <mapping class="model.Grupo"/>
     <mapping class="model.Marca"/>
     <mapping class="model.Produto"/>
+    <mapping class="model.Moeda"/>
+    <mapping class="model.Conta"/>
   </session-factory>
 </hibernate-configuration>

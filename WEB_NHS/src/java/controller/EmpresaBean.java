@@ -80,6 +80,10 @@ public class EmpresaBean {
         empresa = (Empresa) empresas.getRowData();
         return "empresafrm";
     }
+     public String view(Empresa i) {
+        empresa = (Empresa) empresas.getRowData();
+        return "empresaview";
+    }
     
         public List<Bairro> getLstBairro() {
         if (empresa.getEmp_cidade() == null) {

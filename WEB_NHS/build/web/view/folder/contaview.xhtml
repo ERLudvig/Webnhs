@@ -1,0 +1,39 @@
+<ui:composition template="../modelos/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+             Conta #{contaBean.conta.con_nome}
+    </ui:define>
+
+    <ui:define name="breadcrumb">
+         <li><h:link value="Lista de Contas" outcome="/faces/view/folder/moedalst" /></li>
+          <li><h:link value="Moedas da Conta" outcome="" /></li>
+    </ui:define>
+
+    <ui:define name="main-content">
+        <div class="panel panel-body">
+            <h3><h:outputText value="Lista de Moedas da Conta"/></h3>
+            <div class="btns-top-table">
+            </div>
+            <h:form>
+                
+<!--                <h:dataTable var="itens" value="#{contaBean.HMoedas}" styleClass=" table table-bordered table-striped">
+                        <h:column headerClass="col-visualizar-header">
+                                <f:facet name="header">
+                                    <h:outputText value="Folha"/>
+                                </f:facet>
+                                <h:commandLink title="Visualalizar" action="" >
+                                    <i class="fa fa-file-text-o"></i> Visualizar
+                                </h:commandLink>
+                            </h:column>
+                       
+
+                    </h:dataTable>-->
+               
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

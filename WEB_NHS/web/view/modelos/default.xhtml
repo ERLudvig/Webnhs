@@ -179,16 +179,30 @@
                                             <span class="fa dropdown-chevron pull-right"></span>
                                         </a>
                                         <ul class="submenu">
-                                            <li class="#{view.viewId.contains('/endereco') ? 'active' : ''}">
+                                            
+                                            <li class="#{view.viewId.contains('/moeda') ? 'active' : ''}">
+                                                <h:link outcome="/faces/view/folder/moedalst">
+                                                    <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Moeda</span>
+                                                </h:link>
+                                                </li>
+                                            <li class="#{view.viewId.contains('/conta') ? 'active' : ''}">
+                                                  <h:link outcome="/faces/view/folder/contalst">
+                                                     <span class="fa fa-list-alt"></span>
+                                                    <span class="menu-text">Conta</span>
+                                                </h:link> 
+                                                 </li>
+                                                 <li class="#{view.viewId.contains('/entrada') ? 'active' : ''}">
                                                 <h:link outcome="/faces/view/nada">
                                                     <span class="fa fa-list-alt"></span>
                                                     <span class="menu-text">Operação de Entrada</span>
-                                                </h:link>   
+                                                </h:link> 
+                                                     </li>
+                                                  <li class="#{view.viewId.contains('/saida') ? 'active' : ''}">
                                                 <h:link outcome="/faces/view/nada">
                                                     <span class="fa fa-list-alt"></span>
                                                     <span class="menu-text">Operação de Saída</span>
                                                 </h:link>   
-
                                             </li>
                                         </ul>
                                     </li>

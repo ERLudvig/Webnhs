@@ -12,8 +12,8 @@
 
     <ui:define name="breadcrumb">
 
-        <li><h:link value="Lista de Produtos" outcome="/faces/view/pro/produtolst" /></li>
-        <li><h:link value="Cadastro de Produtos" outcome="/faces/view/pro/produtofrm" /></li>
+        <li><h:link value="Lista de Produtos" outcome="/faces/view/folder/produtolst" /></li>
+        <li><h:link value="Cadastro de Produtos" outcome="/faces/view/folder/produtofrm" /></li>
     </ui:define>
 
     <ui:define name="main-content">
@@ -62,11 +62,11 @@
                                 <h:selectBooleanCheckbox id="pro_ativo" value="#{produtoBean.produto.pro_ativo}" title="Situação" pt:autofocus="" />
                             </div>
                     </div>
-                    <div class="form-group">
+<!--                    <div class="form-group">
                         <h:outputLabel value="Custo :" for="pro_custo" styleClass="control-label col-sm-2" />
                         <div class="col-md-6 col-sm-12">
-                            <h:inputText  style="width: 20px" pt:required="required" id="pro_custo" value="#{produtoBean.produto.pro_custo}" title="Custo" styleClass="form-control" pt:autofocus="" />
-                        </div></div>                   
+                            <h:inputText  style="width: 20px" pt:required="required" id="pro_custo" value="{produtoBean.produto.pro_custo}" title="Custo" styleClass="form-control" pt:autofocus="" />
+                        </div></div>                   -->
                     <div class="form-group">
                         <h:outputLabel value="Observação :" for="pro_obs" styleClass="control-label col-sm-2" />
                         <div class="col-md-6 col-sm-12">
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <h:outputLabel value="Estoque :" for="pro_est" styleClass="control-label col-sm-2" />
                         <div class="col-md-6 col-sm-12">
-                            <h:inputText pt:required="required" id="pro_est" value="#{produtoBean.produto.pro_q_estoque}" title="Estoque" styleClass="form-control" pt:autofocus="" />
+                            <h:inputText pt:required="required" id="pro_est"  value="#{produtoBean.produto.pro_q_estoque}" title="Estoque" styleClass="form-control" pt:autofocus="" />
                         </div></div>                 
 
                     <div class="form-group">
